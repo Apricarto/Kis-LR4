@@ -1,0 +1,224 @@
+-- phpMyAdmin SQL Dump
+-- version 4.8.3
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:8889
+-- Generation Time: May 22, 2020 at 12:10 PM
+-- Server version: 5.7.23
+-- PHP Version: 7.2.8
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: `aviasales`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `city`
+--
+
+CREATE TABLE `city` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `GMT` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `city`
+--
+
+INSERT INTO `city` (`id`, `name`, `GMT`) VALUES
+(1, 'Санкт-Петербург', 2),
+(2, 'Симферополь', 0),
+(3, 'Тюмень', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `flight`
+--
+
+CREATE TABLE `flight` (
+  `id` int(11) NOT NULL,
+  `departure_city` int(11) NOT NULL,
+  `arrival_city` int(11) NOT NULL,
+  `departure_date` varchar(50) NOT NULL,
+  `arrival_date` varchar(50) NOT NULL,
+  `price` int(11) NOT NULL,
+  `price_with_baggage` int(11) NOT NULL,
+  `baggage` int(11) NOT NULL,
+  `refound` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `flight`
+--
+
+INSERT INTO `flight` (`id`, `departure_city`, `arrival_city`, `departure_date`, `arrival_date`, `price`, `price_with_baggage`, `baggage`, `refound`) VALUES
+(1, 1, 3, '13 мая 2020 22:00', '14 мая 2020 2:00', 13000, 14500, 5, 1),
+(2, 1, 2, '13 марта 2020 12:00', '13 марта 2020 15:00', 5600, 7200, 3, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `passenger`
+--
+
+CREATE TABLE `passenger` (
+  `id` int(11) NOT NULL,
+  `amount_of_adults` int(11) DEFAULT NULL,
+  `amount_of_children` int(11) DEFAULT NULL,
+  `amount_of_babies` int(11) DEFAULT NULL,
+  `ticket_type` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `passenger`
+--
+
+INSERT INTO `passenger` (`id`, `amount_of_adults`, `amount_of_children`, `amount_of_babies`, `ticket_type`) VALUES
+(2, 2, 1, 0, 'Комфорт'),
+(3, 1, 2, 3, 'Комфорт'),
+(4, 1, 2, 3, 'Комфорт');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ticket`
+--
+
+CREATE TABLE `ticket` (
+  `id` int(11) NOT NULL,
+  `departure_city` int(11) NOT NULL,
+  `arrival_city` int(11) NOT NULL,
+  `departure_date` varchar(50) NOT NULL,
+  `arrival_date` varchar(50) NOT NULL,
+  `passenger` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ticket`
+--
+
+INSERT INTO `ticket` (`id`, `departure_city`, `arrival_city`, `departure_date`, `arrival_date`, `passenger`) VALUES
+(1, 1, 2, '13 мая 2020 22:00', '14 мая 2020 2:00', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ticket_city`
+--
+
+CREATE TABLE `ticket_city` (
+  `ticket_id` int(11) NOT NULL,
+  `city_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ticket_passenger`
+--
+
+CREATE TABLE `ticket_passenger` (
+  `ticket_id` int(11) NOT NULL,
+  `passenger_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `city`
+--
+ALTER TABLE `city`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id` (`id`);
+
+--
+-- Indexes for table `flight`
+--
+ALTER TABLE `flight`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `departure_city` (`departure_city`,`arrival_city`),
+  ADD KEY `arrival_city_flight` (`arrival_city`);
+
+--
+-- Indexes for table `passenger`
+--
+ALTER TABLE `passenger`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ticket`
+--
+ALTER TABLE `ticket`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `departure_city` (`departure_city`),
+  ADD KEY `arrival_city` (`arrival_city`),
+  ADD KEY `passenger` (`passenger`);
+
+--
+-- Indexes for table `ticket_city`
+--
+ALTER TABLE `ticket_city`
+  ADD KEY `ticket_id` (`ticket_id`),
+  ADD KEY `city_id` (`city_id`);
+
+--
+-- Indexes for table `ticket_passenger`
+--
+ALTER TABLE `ticket_passenger`
+  ADD KEY `ticket_id` (`ticket_id`),
+  ADD KEY `passenger_id` (`passenger_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `city`
+--
+ALTER TABLE `city`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `flight`
+--
+ALTER TABLE `flight`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `passenger`
+--
+ALTER TABLE `passenger`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `ticket`
+--
+ALTER TABLE `ticket`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `flight`
+--
+ALTER TABLE `flight`
+  ADD CONSTRAINT `arrival_city_flight` FOREIGN KEY (`arrival_city`) REFERENCES `city` (`id`),
+  ADD CONSTRAINT `departure_city_flight` FOREIGN KEY (`departure_city`) REFERENCES `city` (`id`);
+
+--
+-- Constraints for table `ticket`
+--
+ALTER TABLE `ticket`
+  ADD CONSTRAINT `arrival_cities` FOREIGN KEY (`arrival_city`) REFERENCES `city` (`id`),
+  ADD CONSTRAINT `departure_cities` FOREIGN KEY (`departure_city`) REFERENCES `city` (`id`),
+  ADD CONSTRAINT `passengers` FOREIGN KEY (`passenger`) REFERENCES `passenger` (`id`);

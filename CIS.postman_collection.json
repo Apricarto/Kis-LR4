@@ -1,0 +1,242 @@
+{
+	"info": {
+		"_postman_id": "9cec27ae-c765-486b-970a-10a89ada8658",
+		"name": "CIS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getPassengers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/getPassengers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"getPassengers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postPassenger",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "amountOfAdults",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "amountOfChildren",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "amountOfBabies",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "ticketType",
+							"value": "Комфорт",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/postPassenger",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"postPassenger"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "putPassenger",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "amountOfAdults",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "amountOfChildren",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "amountOfBabies",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "ticketType",
+							"value": "Эконом",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/putPassenger/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"putPassenger",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePassenger",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/deletePassenger/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"deletePassenger",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getTickets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "putTicket",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost:8000/putTicket/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"putTicket",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCities",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/getCities",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"getCities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCity",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/getCity",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"getCity"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getFlights",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getFlight",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/getFlight/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"getFlight",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

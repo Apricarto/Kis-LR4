@@ -1,3 +1,49 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+GetPassengers:
+    path:       /getPassengers
+    controller: App\Controller\PassengersController::GetPassengers
+    methods:    GET
+
+PostPassengers:
+    path:       /postPassenger
+    controller: App\Controller\PassengersController::PostPassenger
+    methods:    POST
+
+PutPassengers:
+    path:       /putPassenger/{id}
+    controller: App\Controller\PassengersController::PutPassenger
+    methods:    PUT
+
+DeletePassengers:
+    path:       /deletePassenger/{id}
+    controller: App\Controller\PassengersController::DeletePassenger
+    methods:    DELETE
+
+GetTickets:
+    path:       /getTickets
+    controller: App\Controller\TicketsController::GetTickets
+    methods:    GET
+
+PutTickets:
+    path:       /putTicket/{id}
+    controller: App\Controller\TicketsController::PutTicket
+    methods:    PUT
+
+GetCities:
+    path:       /getCities
+    controller: App\Controller\CitiesController::GetCities
+    methods:    GET
+
+GetCity:
+    path:       /getCity/{id}
+    controller: App\Controller\CitiesController::GetCity
+    methods:    GET
+
+GetFlights:
+    path:       /getFlights
+    controller: App\Controller\FlightsController::GetFlights
+    methods:    GET
+
+GetFlight:
+    path:       /getFlight/{id}
+    controller: App\Controller\FlightsController::GetFlight
+    methods:    GET
