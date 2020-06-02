@@ -1,5 +1,5 @@
-GetPassengers:
-    path:       /getPassengers
+Passengers:
+    path:       /passengers
     controller: App\Controller\PassengersController::GetPassengers
     methods:    GET
 
