@@ -4,46 +4,46 @@ Passengers:
     methods:    GET
 
 PostPassengers:
-    path:       /postPassenger
+    path:       /postPassengers
     controller: App\Controller\PassengersController::PostPassenger
     methods:    POST
 
 PutPassengers:
-    path:       /putPassenger/{id}
+    path:       /putPassengers/{id}
     controller: App\Controller\PassengersController::PutPassenger
     methods:    PUT
 
 DeletePassengers:
-    path:       /deletePassenger/{id}
+    path:       /deletePassengers/{id}
     controller: App\Controller\PassengersController::DeletePassenger
     methods:    DELETE
 
 GetTickets:
-    path:       /getTickets
+    path:       /ticket
     controller: App\Controller\TicketsController::GetTickets
     methods:    GET
 
 PutTickets:
-    path:       /putTicket/{id}
+    path:       /ticket-passengers/{id}
     controller: App\Controller\TicketsController::PutTicket
     methods:    PUT
 
 GetCities:
-    path:       /getCities
+    path:       /cities
     controller: App\Controller\CitiesController::GetCities
     methods:    GET
 
 GetCity:
-    path:       /getCity/{id}
+    path:       /city/{id}
     controller: App\Controller\CitiesController::GetCity
     methods:    GET
 
 GetFlights:
-    path:       /getFlights
+    path:       /flights
     controller: App\Controller\FlightsController::GetFlights
     methods:    GET
 
 GetFlight:
-    path:       /getFlight/{id}
+    path:       /flight/{id}
     controller: App\Controller\FlightsController::GetFlight
     methods:    GET
